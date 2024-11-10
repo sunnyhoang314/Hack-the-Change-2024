@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('ask/<int:ask_id>/distance', views.get_distance_from_user, name='get_distance_from_user'),
+    path('user/<int:user_id>/rank/', views.get_user_rank, name='get_user_rank'),
+    path('leaderboard/', views.get_user_leaderboard, name='get_user_leaderboard'),
+    path('global-leaderboard/', views.get_global_leaderboard, name='get_global_leaderboard'),
+    path('create_task_request/', views.create_task_request, name='create_task_request'),]
